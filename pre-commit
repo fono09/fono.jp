@@ -1,0 +1,12 @@
+#!/bin/sh
+docker run -d -v $PWD:/srv/jekyll jekyll/jekyll jekyll b -s src
+CTID=`docker ps -ql`
+EC=$(docker wait $CTID)
+
+if [ $EC -eq 0 ]; then
+	docker rm $CTID
+else
+	echo "jekyll build failed!!"
+fi
+
+exit $EC
