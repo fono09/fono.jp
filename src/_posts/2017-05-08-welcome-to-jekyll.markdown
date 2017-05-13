@@ -1,25 +1,36 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   2017-05-08 06:58:24 +0000
-categories: jekyll update
+title:  "Jekyllはじめました"
+date:   2017-05-13 14:58:24 +0900
+categories: jekyll
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
-To add new posts, simply add a file in the `_posts` directory that follows the convention `YYYY-MM-DD-name-of-post.ext` and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+タイミングがタイミングで、jekyllの標準ページだと恥ずかしいので、自己紹介と、最初の記事を追加した。技術的には以下のような作業を実施した。
 
-Jekyll also offers powerful support for code snippets:
+Gitで記事を管理し、commitしたら自動でjekyllを走らせることで、簡単に版管理・更新が行える。
+そのために、git-hookを用いた。
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
+`.git/hooks/pre-commit`に以下のスクリプトを設置
+```
+#!/bin/sh
+docker run -d -v $PWD:/srv/jekyll jekyll/jekyll jekyll b -s src
+CTID=`docker ps -ql`
+EC=$(docker wait $CTID)
 
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
+if [ $EC -eq 0 ]; then
+	docker rm $CTID
+else
+	echo "jekyll build failed!!"
+fi
 
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+exit $EC
+```
+流れ的には、
+1. 静的コンテンツをビルドするためのコンテナ作成
+2. コンテナのIDを`CTID`に取得
+3. コンテナ`CTID`の終了を待ちつつ、`EC`へ終了コードを取得
+4. 終了コードが非ゼロならば騒いでコンテナを残しておく
+5. 何もなければコンテナ消して終了
+
+べーんり！
+
