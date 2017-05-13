@@ -12,6 +12,7 @@ Gitで記事を管理し、commitしたら自動でjekyllを走らせること�
 `.git/hooks/pre-commit`に以下のスクリプトを設置
 ```
 #!/bin/sh
+cd $(git rev-parse --show-toplevel)
 docker run -d -v $PWD:/srv/jekyll jekyll/jekyll jekyll b -s src
 CTID=`docker ps -ql`
 EC=$(docker wait $CTID)
@@ -25,11 +26,15 @@ fi
 exit $EC
 ```
 流れ的には、
-1. 静的コンテンツをビルドするためのコンテナ作成
-2. コンテナのIDを`CTID`に取得
-3. コンテナ`CTID`の終了を待ちつつ、`EC`へ終了コードを取得
-4. 終了コードが非ゼロならば騒いでコンテナを残しておく
-5. 何もなければコンテナ消して終了
+1. jekyllを実行するパス(Gitリポジトリのルート)へ移動
+2. 静的コンテンツをビルドするためのコンテナ作成
+3. コンテナのIDを`CTID`に取得
+4. コンテナ`CTID`の終了を待ちつつ、`EC`へ終了コードを取得
+5. 終了コードが非ゼロならば騒いでコンテナを残しておく
+6. 何もなければコンテナ消して終了
 
 べーんり！
 
+## 参考サイト
+* [Jekyll を Docker でやる](http://jyane.jp/2016/02/03/jekyll.html)
+* [how to get project path in hook script post-commit?(git) - Stack Overflow](http://stackoverflow.com/questions/5248587/how-to-get-project-path-in-hook-script-post-commitgit)
