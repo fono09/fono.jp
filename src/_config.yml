@@ -18,7 +18,7 @@ email: fono(at)fono.jp
 description: > # this means to ignore newlines until "baseurl:"
         自己紹介とかその他諸々
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://fono.jp/" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: fono09
 github_username:  fono09
 
