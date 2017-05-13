@@ -4,12 +4,50 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](https://jekyllrb.com/)
+私について
+==========
 
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jekyll" %} /
-[minima](https://github.com/jekyll/minima)
+# やりつづけられること
 
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+* ネットワーク
+	* エッジからキャンパスまで
+	* ディストリビューションからコアで使うピアリングはまだだめ
+* サーバ構築/運用
+	* Linuxとコンテナ型仮想化
+	* オーケストレーション/ディスカバリはまだだめ
+* コーディング
+	* Ruby
+	* JavaScript
+	* Perl
+* ソフトウェア設計/仕様検討
+	* ソフトウェア工学の研究室で慣れました
+
+# やりたいこと
+
+**まだできないこと**
+
+
+# 趣味
+
+移動すること。見たことのない風景を眺めること。
+アニメも視聴するし、自転車で50km走るし、10km以上は余裕で歩くし、心地よいことはなんでもする。
+ただスポーツ音痴。
+
+# 実績
+
+## 団体戦
+
+* ICTSC6
+	準優秀賞
+* ISUCON6
+	学生1位(全体5位)
+
+## 個人戦
+
+* SANS NETWARS 2016
+	19位
+
+# インターン
+
+* 株式会社ユニキャスト
+	ペッパーいじってきました
