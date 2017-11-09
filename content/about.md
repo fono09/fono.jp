@@ -1,7 +1,8 @@
 ---
-layout: page
 title: About
-permalink: /about/
+menu: main
+weight: 100
+date: 2017-11-09
 ---
 
 私について
