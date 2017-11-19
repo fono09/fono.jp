@@ -13,7 +13,7 @@ url: /2017/11/19/redundancy/
 当該回線はCGN配下なのでグローバル疎通を取れない。
 GoogleCloudPlatformのComputeEngineまでVPNを張り、そこで固定IPをもらう。
 
-NGN系統が落ちた時は、GoogleCloudPlatformのインスタンスにSoftEther貼って復旧。  
+NGN系統が落ちた時は、GoogleCloudPlatformのインスタンスにSoftEtherVPN張って復旧。  
 モバイル系統が落ちた時は、NGN系統使っていつもどおり復旧。
 
 あーんしん！
