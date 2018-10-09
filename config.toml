@@ -1,4 +1,4 @@
-baseurl = "https://fono.jp/"
+baseurl = ""
 disablePathToLower =  true
 languageCode = "ja-JP"
 title = "FONOのサイト"
@@ -10,6 +10,8 @@ theme = "hugo-dusk"
     name = ""
 
 SectionPagesManu = "main"
+pygmentStyle = "native"
+pygmentCodeFences = true
 
 [[menu.main]]
     name = "Posts"
@@ -29,7 +31,8 @@ SectionPagesManu = "main"
 
 [params]
     github = "fono09"
-    twitter = "fono09"
+    twitter = "fono0c"
+    mastodon = "fono09"
     email = "fono(at)fono.jp"
 
 
