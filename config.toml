@@ -1,4 +1,4 @@
-baseurl = ""
+baseurl = "/"
 disablePathToLower =  true
 languageCode = "ja-JP"
 title = "FONOのサイト"
@@ -32,9 +32,14 @@ pygmentCodeFences = true
 [params]
     github = "fono09"
     twitter = "fono0c"
-    mastodon = "fono09"
     email = "fono(at)fono.jp"
 
-
+[params.colors]
+  # hugo-dusk colors
+  background = "#101010" # background color for the site
+  main = "#99cc66"
+  text = "#dbdbdb"
+  code-quote-bg = "#1D1F21" # background color for quotes and code blocks
+  copyright = "#404040" # copyright text color
 
 
