@@ -33,6 +33,7 @@ pygmentCodeFences = true
     github = "fono09"
     twitter = "fono0c"
     email = "fono(at)fono.jp"
+    mastodon = "https://ma.fono.jp/@fono"
 
 [params.colors]
   # hugo-dusk colors
