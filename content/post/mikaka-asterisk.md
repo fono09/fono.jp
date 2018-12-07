@@ -11,6 +11,7 @@ date: 2018-12-08T00:00:00+09:00
 つい先日行った，実家への帰省もバイクで走りたいような路面でした．
 
 どうやら今年は暖冬のようです．でも寒いです．
+今日の天気予報は雨まじりの雪になっています．
 
 そんなことはどうでもよくって，私はこの記事を
 信州大学 kstm Advent Calendar 2018，8日目の記事として書きました．
@@ -27,7 +28,7 @@ date: 2018-12-08T00:00:00+09:00
 
 # 背景
 
-こんな寒い日が続くならば，玄関から一歩もずに，暖房をかけるかあるいはコタツに潜り込むなどして，
+こんな寒い日が続くならば，玄関から一歩も出ずに，暖房をかけるかあるいはコタツに潜り込むなどして，
 一日中端末に向かって，進捗を生み出すなり，ゲームするなり，SNSに入り浸る等して，過ごすのが良さそうです．
 
 しかし，現実は非情であって，家から出なければならない用事は山ほどあります．
@@ -50,6 +51,7 @@ date: 2018-12-08T00:00:00+09:00
 
 VPNに関しては，[SoftEther][]を使っているので，接続性に関してはあまり問題はありません．
 [SoftEther][]が`TCP/443`を塞いで邪魔だとかいう人は下記のページが参考になると思います．
+
 * [nginxをTSL-SNI対応TCPプロキシとして使う](https://fono.jp/post/tsl-sni-tcp-proxy-nginx/)
 * [inconshreveable/slt: A TLS reverse proxy with SNI multiplexing in Go](https://github.com/inconshreveable/slt)
 
@@ -130,6 +132,7 @@ Allow: ACK, BYE, CANCEL, INVITE, PRACK, UPDATE
 
 
 尚，SIPの元になった[RFC3261][]にはこうあります．
+
 > All UAs MUST support the OPTIONS method.
 
 `OPTIONS` メソッドは互いの端末の機能/能力確認に使われます．
