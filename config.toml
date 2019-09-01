@@ -3,7 +3,7 @@ disablePathToLower =  true
 languageCode = "ja-JP"
 title = "FONOのサイト"
 cannonifyurls = true
-paginate = 3
+paginate = 6
 theme = "hugo-dusk"
 hasCJKLanguage = true
 
