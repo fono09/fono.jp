@@ -5,6 +5,7 @@ title = "FONOのサイト"
 cannonifyurls = true
 paginate = 3
 theme = "hugo-dusk"
+hasCJKLanguage = true
 
 [author]
     name = ""
