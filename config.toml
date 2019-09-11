@@ -1,3 +1,4 @@
+DefaultContentLanguage = "ja"
 baseurl = "/"
 disablePathToLower =  true
 languageCode = "ja-JP"
