@@ -45,7 +45,7 @@ sequenceDiagram
     deploy->>Github: git pull
     Github-->deploy: contents
     deploy->>Github: git submodule update --init --recursive
-    Github-->deloy: submodules(theme)
+    Github-->deploy: submodules(theme)
     deploy->>hugo: render
     hugo-->deploy: rendered
     workstation->>nginx: HTTP Get
