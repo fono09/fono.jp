@@ -3,16 +3,16 @@ disablePathToLower =  true
 languageCode = "ja-JP"
 title = "FONOのサイト"
 cannonifyurls = true
-paginate = 6
+paginate = 4 
 theme = "hugo-dusk"
 hasCJKLanguage = true
 
 [author]
-    name = ""
+    name = "ふぉの"
 
-SectionPagesManu = "main"
-pygmentStyle = "native"
-pygmentCodeFences = true
+#SectionPagesManu = "main"
+#pygmentStyle = "vim"
+#pygmentCodeFences = true
 
 [[menu.main]]
     name = "Posts"
@@ -35,13 +35,12 @@ pygmentCodeFences = true
     twitter = "fono0c"
     email = "fono(at)fono.jp"
     mastodon = "https://ma.fono.jp/@fono"
-
+    mainSections = ["post"]
+    
 [params.colors]
-  # hugo-dusk colors
-  background = "#101010" # background color for the site
-  main = "#99cc66"
-  text = "#dbdbdb"
-  code-quote-bg = "#1D1F21" # background color for quotes and code blocks
-  copyright = "#404040" # copyright text color
-
-
+    # hugo-dusk colors
+    background = "#101010" # background color for the site
+    main = "#99cc66"
+    text = "#dbdbdb"
+    code-quote-bg = "#1D1F21" # background color for quotes and code blocks
+    copyright = "#404040" # copyright text color
