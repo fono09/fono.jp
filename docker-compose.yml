@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  caddy:
+    image: caddy:2.0.0
+    expose: 
+      - "8080"
+    volumes:
+      - /var/www/fono.jp:/var/www/fono.jp
+      - $PWD/Caddyfile:/etc/caddy/Caddyfile
+        #    restart: always
+    environment:
+      VIRTUAL_HOST: fono.jp
+      VIRTUAL_PORT: 8080
+      LETSENCRYPT_HOST: fono.jp
+      LETSENCRYPT_EMAIL: fono@fono.jp
+    networks:
+      - nginx_proxy_network
+    restart: always
+networks:
+  nginx_proxy_network:
+    external: true
