@@ -1,7 +1,6 @@
 ---
 title: "PrometheusとSNMPv3とRTX810"
-date: 2020-05-09T15:24:23+09:00
-draft: true
+date: 2020-06-13T15:24:23+09:00
 ---
 
 # TL;DR
@@ -9,8 +8,8 @@ draft: true
 * アラートも上がらないので気付かなかった
 * 会社の同僚が自宅のトラフィックのグラフとかカジュアルに貼ってきて羨ましい
 * Prometheusで監視に手を付けることにした
-  * [SNMP Exporter](https://github.com/prometheus/snmp_exporter)を使ってSNMP受信
-  * [prometheus-webhook-snmp](https://github.com/SUSE/prometheus-webhook-snmp)を使ってSNMP Trap受信
+  [SNMP Exporter](https://github.com/prometheus/snmp_exporter)を使ってSNMP受信
+* PrometheusからGrafanaの連携は比較的簡単なのでこの記事では解説しない
 
 # 動機 
 
@@ -42,7 +41,7 @@ draft: true
 * 拠点C
   * 自宅
   * 設定/オペレーションもここから
-  * COVID-19の影響で1ヶ月近く引き篭もっている
+  * COVID-19の影響で1ヶ月近く引き篭もっていた
 
 # 説明用構成
 
@@ -53,31 +52,17 @@ draft: true
 
 # 実装
 
-1. RTX810のSNMP設定
-1. SNMP Exporterの設定
-1. Prometheusの設定
-1. prometheus-webhook-snmpの設定
-
-## RTX810(A)のSNMP設定
+## RTX810のSNMP設定
 
 YAMAHAのサイトを参考に以下の設定を書く  
 [SNMP](http://www.rtpro.yamaha.co.jp/RT/docs/snmp/index.html#command_common)
 
-尚、目一杯長いパスワードを入力すると折返しなどで設定に失敗するケースがあるので注意(半日溶かした)
+SNMPv3で目一杯長いパスワードを入力すると折返しなどで設定に失敗するケースがあるので注意
 
 ```
-diff --git a/config/RTX810 b/config/RTX810
-index 29b3aea..1e617a2 100644
---- a/config/RTX810
-+++ b/config/RTX810
-@@ -309,6 +309,10 @@ dns server dhcp lan2
- # SNMP configuration
- #
-
-+snmpv3 context name foo.jp
-+snmpv3 usm user 1 foo sha UWAApasswordOOOO aes128-cfb UWAAprivPasswordOOOOO
-+snmpv3 host 192.0.2.1 user 1
-+snmpv3 trap host 192.0.2.1 user 1
+snmpv3 context name foo.jp
+snmpv3 usm user 1 foo sha UWAApasswordOOOO aes128-cfb UWAAprivPasswordOOOOO
+snmpv3 host 192.0.2.1 user 1
 ```
 
 ## SNMP Exporterの設定
@@ -248,7 +233,7 @@ curl 'http://192.0.2.1:9116/snmp?target=192.0.2.254&module=rtx810'
       - "9090:9090"
     volumes:
       - $PWD/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-      - $PWD/prometheus/data:/etc/prometheus/data
+      - $PWD/prometheus/data:/prometheus
     restart: always
 ```
 
