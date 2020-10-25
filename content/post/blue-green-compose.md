@@ -9,11 +9,10 @@ tags:
 # 免責事項
 切替中にいくつかのリクエストを零している可能性があります。
 
-# TL;DR
+# 3行でまとめるとこう
 * docker-composeだけで無停止っぽいデプロイをしたい
 * k8sとかそこらを手元でセットアップする気がない
 * シェル芸とnginx-proxyの組み合わせでできた: [fono09/BlueGreenCompose](https://github.com/fono09/BlueGreenCompose)
-* 実際に、個人用mastodonインスタンス https://ma.fono.jp/ にこれを適用した
 
 # 結論
 [nginx-proxy](https://github.com/nginx-proxy/nginx-proxy)とシェルスクリプト芸でできる。
@@ -21,14 +20,24 @@ nginx-proxyがDocker側でサービス検知のような挙動をしてくれる
 
 # モチベーション
 自宅サーバーや個人サービスで止めたくない。加えて、がそこまでクリティカルじゃない。k8sを建てるほどスケーリングとディスカバリのメリットがない。
-
 そういう微妙な環境でもBlueGreenDeploymentっぽいことしたい。docker-composeで全てを管理するときに使う。
+
+だいたい、自宅の個人用マストドンの無停止アップグレード(https://ma.fono.jp/)に利用する。
 
 # 動作
 
 1. docker-compose.yml内でYAMLのマージを使ってサービスの名前のサフィックスが違う2つのサービスを立てる
 1. dockerのhealthcheckと、ログ監視等を使ってコンテナにアクセスが来ているか確認する
 1. 動作しているようなら前のを落として完全に切り替える
+
+# 使用例
+
+1. [fono09/BlueGreenCompose](https://github.com/fono09/BlueGreenCompose)をサブモジュールに追加
+1. サブモジュール側でフォークしてこんなふうに編集
+https://github.com/fono09/BlueGreenCompose/commit/b1d1ebfd7c51266dce2c8d569b6032a6158e892d
+1. 編集したのをフォークとして上げて保存
+https://github.com/fono09/mastodon/commit/25e21ebae7c509d0fe29855230548ed37d2b1ab8
+1. `(リポジトリルート)/BlueGreenCompose/autodeploy.sh` を叩いて無停止デプロイ
 
 # 感想
 
