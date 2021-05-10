@@ -53,6 +53,9 @@ tags:
   例えばこんな感じの合せ技  
   * [node.js - Can we use NGINX as webapp for template engine - Stack Overflow](https://stackoverflow.com/questions/48577858/can-we-use-nginx-as-webapp-for-template-engine)
   * [How to extract some value from cookie in nginx - Stack Overflow](https://stackoverflow.com/questions/26128412/how-to-extract-some-value-from-cookie-in-nginx)
+* Rubyでもメモリキャッシュ実装はあるので使えば良かった
+  * [GitHub - SamSaffron/lru_redux: An efficient optionally thread safe LRU Cache](https://github.com/SamSaffron/lru_redux)
+  * 使用例: [sites/viewer.rb at master · peterkeen/sites · GitHub](https://github.com/peterkeen/sites/blob/master/viewer.rb)
 
 # 何をやったか
 
